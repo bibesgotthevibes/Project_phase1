@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .eye-pass {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .eye-pass input[type='password'] {
+            margin-right: 5px;
+            padding-right: 30px;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth change */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        button.eye-button {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            background-image: url('eye.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 5px;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth change */
+            opacity: 0.7; /* Reduced opacity for button */
+        }
+        button.eye-button:hover {
+            opacity: 1; /* Increase opacity on hover */
+        }
+        .container {
+            background-color: #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            color: #fff;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth change */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff; /* Changed color to white */
+            font-size: 24px; /* Reduced font size */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth change */
+        }
+
+        button {
+            background-color: #45a049;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out; /* Added transition for smooth change */
+        }
+
+        button:hover {
+            background-color: #4caf50;
+        }
+
+        button:hover, button:active {
+            transform: translateY(-2px); /* Added small vertical movement on hover and click */
+        }
+
+        /* Background gradient animation */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #4caf50, #45a049);
+            z-index: -1;
+            opacity: 0.3; /* Reduced opacity */
+            animation: gradientAnimation 10s ease infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
+
+        /* Input hover effect */
+        input:hover {
+            background-color: #fff;
+            border-color: #4caf50;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #4caf50;
+        }
+
+        /* Button click effect */
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Sign Up</h2>
+    <form id="signupForm" action="#" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required autocomplete="off">
+        <input type="text" name="email" placeholder="Email" required autocomplete="off">
+        <div class="eye-pass">
+            <input type="password" name="password" id="passwordInput" placeholder="Password" required autocomplete="off">
+            <button type="button" class="eye-button" id="togglePasswordButton" onclick="togglePassword('passwordInput', 'togglePasswordButton')"></button>
+        </div>
+        <div class="eye-pass">
+            <input type="password" name="confirmPassword" id="confirmPasswordInput" placeholder="Confirm Password" required autocomplete="off">
+            <button type="button" class="eye-button" id="toggleConfirmPasswordButton" onclick="togglePassword('confirmPasswordInput', 'toggleConfirmPasswordButton')"></button>
+        </div>
+        <input type="text" name="dob" placeholder="Date of Birth (DD-MM-YYYY)" required autocomplete="off">
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+<script>
+    function togglePassword(inputId, buttonId) {
+        const passwordInput = document.getElementById(inputId);
+        const button = document.getElementById(buttonId);
+
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Change eye icon based on password visibility
+        if (type === "password") {
+            button.style.backgroundImage = "url('eye.svg')";
+        } else {
+            button.style.backgroundImage = "url('eye-off.svg')";
+        }
+    }
+</script>
+</body>
+</html>
